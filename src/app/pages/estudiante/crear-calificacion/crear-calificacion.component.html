@@ -1,0 +1,63 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Crear Calificacion</button>
+<div class="modal fade prueba" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Tarea</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form  #f="ngForm">
+            <div class="mb-3">
+              <label for="nombreId" class="col-form-label">Nombre Tarea:</label>
+              <input type="text" class="form-control" id="nombreId" name="nombre" [(ngModel)]="califcacion.nombreTarea" 
+              required minlength="5"
+              [ngClass]="{'is-invalid':nombre.invalid && nombre.touched}" #nombre="ngModel">
+              @if ((nombre.invalid && nombre.touched) )  {
+                <p class="text-danger">Nombre de Tarea requerida</p>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="descripcionId" class="col-form-label">Descripcion:</label>
+              <textarea class="form-control" id="descripcionId" name="descripcion" [(ngModel)]="califcacion.descripcionTarea" 
+              required minlength="5" 
+              [ngClass]="{'is-invalid':descripcion.invalid && descripcion.touched}" #descripcion="ngModel"
+              ></textarea>
+              @if (descripcion.invalid && descripcion.touched) {
+                <p class="text-danger">Descripcion requerida</p>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="fechaInicioId" class="col-form-label">Fecha Inicio:</label>
+              <input type="date" class="form-control" id="fechaInicioId" name="fechaInicio" [(ngModel)]="califcacion.fechaInicio" 
+              required
+              [ngClass]="{'is-invalid':fechaInicio.invalid && fechaInicio.touched}" #fechaInicio="ngModel">
+              @if (fechaInicio.invalid && fechaInicio.touched) {
+                <p class="text-danger">Fecha Inicio requerida</p>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="fechaFinId" class="col-form-label">Fecha Fin:</label>
+              <input type="date" class="form-control" id="fechaFinId" name="fechaFin" [(ngModel)]="califcacion.fechaFin" 
+              required [ngClass]="{'is-invalid':fechaFin.invalid && fechaFin.touched}" #fechaFin="ngModel">
+              @if (fechaFin.invalid && fechaFin.touched) {
+                <p class="text-danger">Fecha Fin requerida</p>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="calificacionId" class="col-form-label">Calificacion:</label>
+              <input type="number" class="form-control" id="calificacionId" name="calificacion" [(ngModel)]="califcacion.calificacion" 
+              required [ngClass]="{'is-invalid':calificacion.pristine && calificacion.touched}" #calificacion="ngModel">
+              @if (calificacion.pristine && calificacion.touched) {
+                <p class="text-danger">Calificacion requerida</p>
+              }
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cerrarBtn">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="guardar(f)">Registrar Tarea</button>
+        </div>
+      </div>
+    </div>
+  </div>

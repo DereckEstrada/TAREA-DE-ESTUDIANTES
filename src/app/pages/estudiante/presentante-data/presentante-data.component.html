@@ -1,0 +1,72 @@
+<div>
+    <div>
+        <h4>Data Representante</h4>
+    </div>
+    <form (ngSubmit)="guardar()" [formGroup]="form" >
+        <div class="row mt-2">
+            <div class="co-1">
+                <label for="nombreId">Nombre</label>
+            </div>
+            <div class="col-5"> 
+                <input class="form-control" type="text" name="nombre" id="nombreId" 
+                formControlName="nombre" [(ngModel)]="representante.nombres" [class.is-invalid]="getInvalidArgument('nombre')">
+                @if(getInvalidArgument('nombre')){
+                    <p class="text-danger">Nombre invalido</p>
+                }
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="co-1">
+                <label for="apellidosId">Apellidos</label>
+            </div>
+            <div class="col-5"> 
+                <input class="form-control" type="text" name="apellidos" id="apellidosId" 
+                formControlName="apellido" [(ngModel)]="representante.apellidos" [class.is-invalid]="getInvalidArgument('apellido')">
+                @if(getInvalidArgument('apellido')){
+                    <p class="text-danger">Apellido invalido</p>
+                }
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="co-1">
+                <label for="relacionId">Relacion</label>
+            </div>
+            <div class="col-5"> 
+                <select name="relacion" id="relacionId" class="form-select" 
+                formControlName="relacion" [(ngModel)]="representante.relacion"  [class.is-invalid]="getInvalidArgument('relacion')" >
+                  <option value="padre">padre</option>
+                    <option value="madre">madre</option>
+                    <option value="tio">tio</option>
+                    <option value="otro">otro</option>
+                </select>
+                @if(getInvalidArgument('relacion')){
+                    <p class="text-danger">Relacion requerida</p>
+                }
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="co-1">
+                <label for="telefonoId">Telefono</label>
+            </div>
+            <div class="col-5"> 
+                <input class="form-control" type="number" name="telefono" id="telefonoId" 
+                formControlName="telefono" [(ngModel)]="representante.telefono" [class.is-invalid]="getInvalidArgument('telefono')">
+                @if(getInvalidArgument('telefono')){
+                    <p class="text-danger">Telefono invalido</p>
+                }
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="co-1">
+                <label for="emailId">Email</label>
+            </div>
+            <div class="col-5"> 
+                <input class="form-control" type="email" name="email" id="emailId" 
+                formControlName="email" [(ngModel)]="representante.email" [class.is-invalid]="getInvalidArgument('email')">
+                @if(getInvalidArgument('email')){
+                    <p class="text-danger">Email invalido</p>
+                }
+            </div>
+        </div>
+    </form>
+</div>
